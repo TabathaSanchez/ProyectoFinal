@@ -14,8 +14,8 @@ import javax.swing.JOptionPane;
     public  class LogIn extends JFrame implements ActionListener 
 {
     public boolean mostrar = true;
-    public boolean correctoU = false;
-    public boolean correctoC = false;
+    public int posicionc;
+    public int posicionu;
     public int cont =0;
     public char [] contra;
     public String clave;
@@ -142,60 +142,79 @@ import javax.swing.JOptionPane;
 
         else if (event.getSource()== this.registro)
         {
-            contenidoUser = Archivo.leerTodo("Usuarios.txt");
+           contenidoUser = Archivo.leerTodo("Usuarios.txt");
           if(contenidoUser != null)
           {
             for (int i=0;i<contenidoUser.size() ; i++) 
             {
               if(txtusuario.getText().equals(contenidoUser.get(i)))
               {
-                JOptionPane.showMessageDialog(null,"USUARIO EXISTENTE, INTENTE CON OTRO");
+                JOptionPane.showMessageDialog(null,"El usuario ya existe intente con otro");
+                txtcontrasenavis.setText("");
                 txtusuario.setText("");
                 txtcontrasena.setText("");
-                txtcontrasenavis.setText("");
                 cont++;
-              }
-              if(cont==0)
+              } 
+            }
+            if(cont ==0)
               {
                 Archivo.CrearArchivo(txtusuario.getText(),"Usuarios.txt");
                 Archivo.CrearArchivo(txtcontrasena.getText(),"Claves.txt");
+                txtcontrasenavis.setText("");
                 txtusuario.setText("");
                 txtcontrasena.setText("");
-                txtcontrasenavis.setText("");
+                JOptionPane.showMessageDialog(null,"REGISTRO EXITOSO");
               }
-            }
           }else{
             Archivo.CrearArchivo(txtusuario.getText(),"Usuarios.txt");
             Archivo.CrearArchivo(txtcontrasena.getText(),"Claves.txt");
+            txtcontrasenavis.setText("");
             txtusuario.setText("");
             txtcontrasena.setText("");
-            txtcontrasenavis.setText("");
-          JOptionPane.showMessageDialog(null,"USUARIO REGISTRADO.");
+            JOptionPane.showMessageDialog(null,"REGISTRO EXITOSO");
           }
         }
-
+    
         else if (event.getSource()== this.inicio) 
         {  
             contenidoUser = Archivo.leerTodo("Usuarios.txt");
-            for (int i=0; i<contenidoUser.size(); i++)
-            {
-                if(txtusuario.getText().equals(contenidoUser.get(i)))
-                {
-                    correctoU = true;
-                    System.out.println("usuario encontrado: "+ contenidoUser.get(i));
-                }   
-            }   
             contenidoPass = Archivo.leerTodo("Claves.txt");
-            for (int i=0; i<contenidoPass.size(); i++)
+            if(contenidoUser!= null && contenidoPass!=null)
             {
-                if( txtcontrasena.getPassword().equals(contenidoPass.get(i)))
+                for (int i=0; i<contenidoUser.size(); i++)
                 {
-                    correctoC = true;
-                    System.out.println("Clave encontrado: "+ contenidoPass.get(i));
+                    if(txtusuario.getText().equals(contenidoUser.get(i)))
+                    {
+                        posicionu = i;
+                        System.out.println("usuario encontrado: " + contenidoUser.get(i));
+                        System.out.println(i);
+                    }   
                 }   
+                
+                for (int i=0; i<contenidoPass.size(); i++)
+                {
+                    if( txtcontrasena.getText().equals(contenidoPass.get(i)))
+                    {
+                        posicionc = i;
+                        System.out.println("Clave encontrado: "+ contenidoPass.get(i)); 
+                        System.out.println(i);
+                    }   
+                }
             }
-            //JOptionPane.showMessageDialog (null, "Usuario no registrado.", "ERROR", JOptionPane.ERROR_MESSAGE);
-
+             if(posicionc == posicionu)
+            {   
+                System.out.println("pase.");
+                txtcontrasenavis.setText("");
+                txtusuario.setText("");
+                txtcontrasena.setText("");
+            }
+            else 
+            {   
+                JOptionPane.showMessageDialog (null, "clave incorrecta.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                txtcontrasenavis.setText("");
+                txtcontrasena.setText("");
+            }
+           
         }
     }
 
