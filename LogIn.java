@@ -86,12 +86,12 @@ import javax.swing.JOptionPane;
         registro = new JButton("Registro");
         registro.setBounds(35,230,120,30);
         registro.setFont(new Font("Copperplate Gothic Bold",Font.PLAIN,15));
-        registro.setBorder(null);   
+       // registro.setBorder(null);   
 
         inicio = new JButton("iniciar");
         inicio.setBounds(255,230,110,30);
         inicio.setFont(new Font("Copperplate Gothic Bold",Font.PLAIN,15));
-        inicio.setBorder(null); 
+        //inicio.setBorder(null); 
 
         this.setJMenuBar(menuBarra);
         this.add(ver);
