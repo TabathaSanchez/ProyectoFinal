@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
     public boolean mostrar = true;
     public int posicionc;
     public int posicionu;
+    public static String nombreUsuario;
     public int cont =0;
     public char [] contra;
     public String clave;
@@ -23,7 +24,7 @@ import javax.swing.JOptionPane;
     public ArrayList <String> contenidoPass = new  ArrayList <String>();
 
     JPanel panel;
-    Color fondo;
+    Color fondo,fondoMenu;
     JLabel texto,usuario,contrasena;
     JTextField txtusuario,txtcontrasenavis;
     JPasswordField txtcontrasena;
@@ -37,11 +38,14 @@ import javax.swing.JOptionPane;
         {   setIconImage(new ImageIcon(getClass().getResource("libros.png")).getImage());   }
         catch(Exception e) {    System.out.println("Error: NO SE ECONTRO IMAGEN");} 
 
+        fondoMenu = new Color(201,184,143);
         menuBarra = new JMenuBar();
-        info = new JMenu("INFORMACION");
+        menuBarra.setBackground(fondoMenu);
+        info = new JMenu("Informacion");
+        info.setFont(new Font("Centaur", Font.PLAIN,15));
         menuBarra.add(info);
 
-        fondo = new Color(187,182,214);
+        fondo = new Color(189,169,121);
         texto = new JLabel("Iniciar Sesion");
         texto.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN,30));
         texto.setBounds(100,50,200,30);
@@ -57,7 +61,6 @@ import javax.swing.JOptionPane;
         contrasena = new JLabel("Clave:");
         contrasena.setFont(new Font("Arial Unicode MS", Font.PLAIN,20));
         contrasena.setBounds(50,160,70,30);
-
 
         txtcontrasena = new JPasswordField();
         txtcontrasena.setBounds(120,160,180,30);
@@ -202,8 +205,11 @@ import javax.swing.JOptionPane;
                 }
             }
              if(posicionc == posicionu)
-            {   
-                System.out.println("pase.");
+            {   nombreUsuario = txtusuario.getText();
+                Menu menu = new Menu();
+                this.dispose();
+                nombreUsuario = txtusuario.getText();
+               // System.out.println("pase.");
                 txtcontrasenavis.setText("");
                 txtusuario.setText("");
                 txtcontrasena.setText("");
@@ -217,6 +223,4 @@ import javax.swing.JOptionPane;
            
         }
     }
-
-
 }
