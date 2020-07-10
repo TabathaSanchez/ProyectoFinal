@@ -1,0 +1,22 @@
+Dentro de estos avances y debido al apoyo tecnologico para investigaciones militares y de
+proyectos espaciales se encuentra sin duda la instrumentacion medica. Algunos tipos de ins-
+trumentacion biomedica son exclusivos en el area de la medicina, pero muchas medidas fi-
+sicas son utilizadas ampliamente, de tal forma se deben reunir ciertos factores como el 
+resto de instrumentos, por ejemplo precision, linealidad, estabilidad, etc. Todo lo cons-
+tituye el cuerpo humano. Como en la obtencion de datos de los organismos vivos especial-
+mente el humano, surgen diferentes problemas debido a la interaccion entre sistemas de
+instrumentacion y el individuo en el que se mide, por tal motivo se hace necesario con-
+siderar al invididuo como parte integrante del sistema de instrumentacion y manejarlo 
+como una caja negra. Por lo tanto a este sistema global que incluye a la persona y al ins-
+trumento se denomina sistema hombre-instrumento.
+La instrumentacion medica actualmente esta presente casi en todos los procedimientos me-
+dicos desde el diagnostico hasta el tratamiento. Es decir desde instrumentos sencillos 
+como el estetoscopio hasta la Tomografia Computarizada, para ampliar el criterio a los 
+medicos y establecer un mejor diagnostico y un tratamiento adecuado.
+El sistema hombre-instrumento se entiende como un conjunto de instrumentos y equipo
+utilizados en la medida de una o mas caracteristicas o fenomenos, asi como la presenta-
+cion de la informacion obtenida de dichas medidas de tal forma que la pueda interpretar
+el hombre. Dentro de este sistema algunas veces se incluyen componentes que proporcionan
+un estimulo o excitacion o bien puede contar con un mecanismo de control para ciertos pro-
+cesos dentro o fuera del sistema, pero para que este completo dicho sistemas debe incluir
+al hombre en quien se realizan las medidas.
