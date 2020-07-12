@@ -2,8 +2,13 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.*;
+import java.lang.*;
+import java.awt.Point;
+import javax.imageio.*;
+import java.awt.Image;
 
-public class EjercicioVelocidadLectura extends JFrame{
+public class EjercicioVelocidadLectura extends JFrame implements KeyListener{
 
 	ArrayList <String> contenidoArchivo;
 	ArrayList <JLabel> lecturaArchivo;
@@ -12,11 +17,14 @@ public class EjercicioVelocidadLectura extends JFrame{
 	JLabel lecturaTemporal;
 	Color fondo;
 	Font font1, font2, font3;
-
-
+	JLabel linea;
 	public EjercicioVelocidadLectura(){
 
 		this.setLayout(null);
+		
+		linea=new JLabel(new ImageIcon("linea.png"));
+		linea.setBounds(17,175,50,10);
+		this.add(linea);
 
 		font1 = new Font("Arial",Font.BOLD,18);
 		font2 = new Font("Arial",Font.ITALIC,16);
@@ -50,18 +58,14 @@ public class EjercicioVelocidadLectura extends JFrame{
 		instruccion[2].setFont(font2);
 		this.add(instruccion[2]);
 
-
-
 		this.setTitle("Ejercicio 1: Velocidad Lectora");
-		this.setResizable(true);
+		this.setResizable(false);
 		this.setBounds(350,90,690,870);
-		this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
 		this.setVisible(true);	
 		this.getContentPane().setBackground(fondo);
-
+		addKeyListener(this);
 		obtenerArchivoEjercicio();
-
-
 	}
 
 	public void obtenerArchivoEjercicio(){
@@ -78,10 +82,28 @@ public class EjercicioVelocidadLectura extends JFrame{
 			lecturaArchivo.get(i).setBounds(15,150+(30*i),1000,30);
 			lecturaArchivo.get(i).setVisible(true);
 			this.add(lecturaArchivo.get(i));
-
-
 		}
-
 	}
-	
+
+	public void keyPressed(KeyEvent e)
+	{
+		int t = e.getKeyCode();
+		Point pos = linea.getLocation();
+		int x = (int)pos.getX();
+		int y = (int)pos.getY();
+		if(t==68){
+			x = x+5;
+			if(x >=600)
+		{
+			y = y+30;
+			x =17;
+		}
+		}
+		linea.setLocation(x,y);
+	}
+	public void keyReleased(KeyEvent e)
+	{}
+	public void keyTyped(KeyEvent e)
+	{}
+
 }
