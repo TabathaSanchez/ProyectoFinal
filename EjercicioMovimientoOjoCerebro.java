@@ -2,19 +2,29 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.*;
+import java.lang.*;
+import java.awt.Point;
+import javax.imageio.*;
+import java.awt.Image;
 
-public class EjercicioMovimientoOjoCerebro extends JFrame{
+public class EjercicioMovimientoOjoCerebro extends JPanel implements KeyListener {
+
+	JFrame frame;
 
 	ArrayList <String> contenidoArchivo1,contenidoArchivo2,contenidoArchivo3,contenidoArchivo4;
 	ArrayList <JLabel> lecturaArchivo1,lecturaArchivo2,lecturaArchivo3,lecturaArchivo4;
-	JLabel titulo;
+	JLabel titulo, linea,linea2;
 	JLabel [] instruccion = new JLabel[3];
 	JLabel lecturaTemporal;
 	Color fondo;
 	Font font1, font2, font3;
+	int contador=0;
+
 
 
 	public EjercicioMovimientoOjoCerebro(){
+		frame = new JFrame();
 
 		this.setLayout(null);
 
@@ -59,19 +69,25 @@ public class EjercicioMovimientoOjoCerebro extends JFrame{
 		instruccion[2].setFont(font2);
 		this.add(instruccion[2]);
 
+		linea = new JLabel(new ImageIcon("linea2.png"));
+		linea.setBounds(0,175,120,10);
+		this.add(linea);
 
 
-		this.setTitle("Ejercicio 1: Velocidad Lectora");
-		this.setResizable(true);
-		this.setBounds(350,90,660,950);
-		this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
-		this.setVisible(true);	
-		this.getContentPane().setBackground(fondo);
+		frame.add(this);
+		frame.setTitle("Ejercicio 1: Velocidad Lectora");
+		frame.setResizable(true);
+		frame.setBounds(350,90,660,950);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);	
+		frame.getContentPane().setBackground(fondo);
+		frame.addKeyListener(this);
 
 		obtenerArchivoEjercicio();
 
 
 	}
+
 
 	public void obtenerArchivoEjercicio(){
 		contenidoArchivo1 = Archivo.leerTodo("EjercicioMovimientoOjoCerebro1.txt");
@@ -134,6 +150,39 @@ public class EjercicioMovimientoOjoCerebro extends JFrame{
 		}
 
 
+
+	}
+
+public void keyPressed(KeyEvent e)
+	{
+		int a=0;
+		int t = e.getKeyCode();
+		Point pos = linea.getLocation();
+		int x = (int)pos.getX();
+		int y = (int)pos.getY();
+		if(t==65)
+		{
+			y+=22;
+			if(y>(175+((lecturaArchivo1.size()-1)*22))){
+				x+=145;
+				y=175;
+				contador++;
+				if(x>500){x=0;}
+				}
+			
+		}
+		linea.setLocation(x,y);
+		System.out.println(contador);
+	}
+
+public void keyReleased(KeyEvent e)
+	{
+		//System.out.println("Tecla liberada.");
+	}
+
+public void keyTyped(KeyEvent e)
+	{
+		//System.out.println("Tecla en el buffer.");
 
 	}
 	
