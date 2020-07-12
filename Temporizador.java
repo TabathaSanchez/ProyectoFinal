@@ -10,6 +10,7 @@ public class Temporizador extends JFrame implements ActionListener{
 	static int minuto = 0, segundo =0, centesimasegundo = 1;
 	static boolean iniciarHilo = true;
 	boolean corriendo = false;
+	ThreadTemporizador threadt;
 
 	public Temporizador(){
 		initialize();
@@ -42,19 +43,27 @@ public class Temporizador extends JFrame implements ActionListener{
 		btnIniciar.setVisible(false);
 		if(event.getSource()==btnIniciar){
 			if(corriendo==false){
-			iniciarHilo=true;
+				iniciarHilo=true;
 				corriendo=true;
 				iniciarHiloTemporizador();
-	
+
+				
 			}
 
 		}
 	}
 
+	private void finalizarHiloTemporizador(){
+		try{
+			threadt.stop();
+		}catch(Exception e){e.printStackTrace();}
+
+	}
+
 
 	private void iniciarHiloTemporizador(){
 		if(iniciarHilo==true){
-			ThreadTemporizador threadt= new ThreadTemporizador(label);
+			threadt= new ThreadTemporizador(label);
 			threadt.start();
 			if(finalizado==true){
 				System.out.println("sleep");

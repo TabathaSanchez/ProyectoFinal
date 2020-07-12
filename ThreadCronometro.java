@@ -23,7 +23,6 @@ public class ThreadCronometro extends Thread{
 	private void ejecutarHiloCronometro(){
 		Cronometro.centesimasegundo++;
 
-
 		if(Cronometro.centesimasegundo>99){Cronometro.centesimasegundo=0; Cronometro.segundo++;}
 		if(Cronometro.segundo>59){Cronometro.segundo=0; Cronometro.minuto++;}
 		if(Cronometro.minuto>59){Cronometro.minuto=0;}

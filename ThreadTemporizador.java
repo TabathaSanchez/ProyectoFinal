@@ -51,8 +51,6 @@ public class ThreadTemporizador extends Thread{
 		String reloj = textMin+":"+textSeg+":"+textCent;
 
 		etiqueta.setText(reloj);
-
-		
 	}
 
 	public void terminarTemporizador(){
@@ -68,8 +66,5 @@ public class ThreadTemporizador extends Thread{
 				e.printStackTrace();
 			}
 		}
-
 	}
-
-
 }
