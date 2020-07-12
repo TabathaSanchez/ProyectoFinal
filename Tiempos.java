@@ -15,6 +15,7 @@ class Tiempos extends JFrame
 		tiempo = new JLabel("SUS TIEMPOS SON:");
 		tiempo.setFont(new Font("Centaur", Font.PLAIN,20));
 		tiempo.setBounds(60,10,180,30);
+		
 		lista = new JTextArea();
 		lista.setBounds(20,40,260,120);
 		lista.setDisabledTextColor(Color.BLACK);
