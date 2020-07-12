@@ -7,16 +7,14 @@ public class Cronometro extends JFrame implements ActionListener{
 	private JLabel label;
 	private JButton btnIniciar;
 	private JButton btnDetener;
-
 	static int minuto = 0, segundo =0, centesimasegundo = 0;
 	static boolean iniciarHilo = true;
 	static boolean corriendo = false;
+	static boolean detenido= false;
+	ThreadCronometro threadc;
 
-	EjercicioVelocidadLectura e;
-
-	public Cronometro(){
-
-		e= new EjercicioVelocidadLectura();
+	public Cronometro()
+	{
 		initialize();
 		setSize(228,120);
 		getContentPane().setLayout(null);
@@ -49,27 +47,32 @@ public class Cronometro extends JFrame implements ActionListener{
 				iniciarHilo=true;
 				corriendo=true;
 				iniciarHiloCronometro();
+				btnIniciar.setVisible(false);
+				this.remove(btnIniciar);
 
-				
 			}
 		}
 		if(event.getSource()==btnDetener){
 			corriendo=false;
 			iniciarHilo=false;
 			setVisible(false);
+			String minutoFinal = Integer.toString(minuto);
+			String segundoinal = Integer.toString(segundo);
+			String centesimaFinal = Integer.toString(centesimasegundo);
 			System.out.println(minuto+":"+segundo+":"+centesimasegundo);
 			dispose();
+			if(centesimasegundo>0)
+			{	Archivo.CrearArchivo(minutoFinal+":"+segundoinal +":"+centesimaFinal,LogIn.nombreUsuario+Menu.numeroEjercicio+".txt");	}
+			try{	threadc.stop();	}
+			catch(Exception e){	e.printStackTrace();}
+			
 			}
-	
 	}
 
-	private void iniciarHiloCronometro(){
+	public  void iniciarHiloCronometro(){
 		if(iniciarHilo==true){
-			ThreadCronometro threadc= new ThreadCronometro(label);
+			 threadc= new ThreadCronometro(label);
 			threadc.start();
 		}
-
-		
 	}
-
 }
