@@ -29,21 +29,12 @@ import javax.swing.JOptionPane;
     JTextField txtusuario,txtcontrasenavis;
     JPasswordField txtcontrasena;
     JButton inicio,registro,ver;
-    JMenuBar menuBarra;
-    JMenu info;
 
     public LogIn()
     {
         try
         {   setIconImage(new ImageIcon(getClass().getResource("libros.png")).getImage());   }
         catch(Exception e) {    System.out.println("Error: NO SE ECONTRO IMAGEN");} 
-
-        fondoMenu = new Color(201,184,143);
-        menuBarra = new JMenuBar();
-        menuBarra.setBackground(fondoMenu);
-        info = new JMenu("Informacion");
-        info.setFont(new Font("Centaur", Font.PLAIN,15));
-        menuBarra.add(info);
 
         fondo = new Color(189,169,121);
         texto = new JLabel("Iniciar Sesion");
@@ -75,6 +66,7 @@ import javax.swing.JOptionPane;
         
         ver = new JButton();
         ver.setBounds(303,160,30,30);
+        ver.setBackground(Color.WHITE);
         ver.setBorder(null);        
        try
         {
@@ -86,14 +78,13 @@ import javax.swing.JOptionPane;
         registro = new JButton("Registro");
         registro.setBounds(35,230,120,30);
         registro.setFont(new Font("Copperplate Gothic Bold",Font.PLAIN,15));
-       // registro.setBorder(null);   
+        registro.setBackground(new Color(227,219,198));
 
         inicio = new JButton("iniciar");
         inicio.setBounds(255,230,110,30);
         inicio.setFont(new Font("Copperplate Gothic Bold",Font.PLAIN,15));
-        //inicio.setBorder(null); 
+        inicio.setBackground(new Color(227,219,198));
 
-        this.setJMenuBar(menuBarra);
         this.add(ver);
         this.add(registro);
         this.add(inicio);
@@ -104,7 +95,7 @@ import javax.swing.JOptionPane;
         this.add(txtcontrasena);
         this.add(txtcontrasenavis);
         this.setResizable(false);
-        this.setTitle("prueba");
+        this.setTitle("MEJORAR LECTURA");
         this.setLayout(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBounds(450,100,400,450);
@@ -189,8 +180,7 @@ import javax.swing.JOptionPane;
                     if(txtusuario.getText().equals(contenidoUser.get(i)))
                     {
                         posicionu = i;
-                        System.out.println("usuario encontrado: " + contenidoUser.get(i));
-                        System.out.println(i);
+                        System.out.println("usuario encontrado: " + contenidoUser.get(i)+ " "+ i);
                     }   
                 }   
                 
@@ -199,8 +189,7 @@ import javax.swing.JOptionPane;
                     if( txtcontrasena.getText().equals(contenidoPass.get(i)))
                     {
                         posicionc = i;
-                        System.out.println("Clave encontrado: "+ contenidoPass.get(i)); 
-                        System.out.println(i);
+                        System.out.println("Clave encontrado: "+ contenidoPass.get(i)+ " "+ i); 
                     }   
                 }
             }
@@ -209,7 +198,6 @@ import javax.swing.JOptionPane;
                 Menu menu = new Menu();
                 this.dispose();
                 nombreUsuario = txtusuario.getText();
-               // System.out.println("pase.");
                 txtcontrasenavis.setText("");
                 txtusuario.setText("");
                 txtcontrasena.setText("");
@@ -220,7 +208,6 @@ import javax.swing.JOptionPane;
                 txtcontrasenavis.setText("");
                 txtcontrasena.setText("");
             }
-           
         }
     }
 }
