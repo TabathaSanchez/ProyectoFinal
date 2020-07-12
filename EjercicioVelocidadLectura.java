@@ -66,6 +66,7 @@ public class EjercicioVelocidadLectura extends JFrame implements KeyListener{
 		this.getContentPane().setBackground(fondo);
 		addKeyListener(this);
 		obtenerArchivoEjercicio();
+
 	}
 
 	public void obtenerArchivoEjercicio(){
