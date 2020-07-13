@@ -2,7 +2,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.awt.Font;
 
-public class Cronometro extends JFrame implements ActionListener{
+public class Cronometro1 extends JFrame implements ActionListener{
 
 	private JLabel label;
 	private JButton btnIniciar;
@@ -12,9 +12,9 @@ public class Cronometro extends JFrame implements ActionListener{
 	static boolean corriendo = false;
 	static boolean detenido= false;
 	EjercicioVelocidadLectura e;
-	ThreadCronometro threadc;
+	ThreadCronometro1 threadc;
 
-	public Cronometro()
+	public Cronometro1()
 	{
 		initialize();
 		setSize(228,120);
@@ -62,6 +62,7 @@ public class Cronometro extends JFrame implements ActionListener{
 			String segundoFinal = Integer.toString(segundo);
 			String centesimaFinal = Integer.toString(centesimasegundo);
 			System.out.println(minuto+":"+segundo+":"+centesimasegundo);
+			e.dispose();
 			dispose();
 			if(centesimasegundo>0)
 			{	Archivo.CrearArchivo(minutoFinal+":"+segundoFinal +":"+centesimaFinal,LogIn.nombreUsuario+Menu.numeroEjercicio+".txt");	}
@@ -73,7 +74,7 @@ public class Cronometro extends JFrame implements ActionListener{
 
 	public  void iniciarHiloCronometro(){
 		if(iniciarHilo==true){
-			 threadc= new ThreadCronometro(label);
+			 threadc= new ThreadCronometro1(label);
 			threadc.start();
 		}
 	}

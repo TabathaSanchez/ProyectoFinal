@@ -2,7 +2,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.awt.Font;
 
-public class Cronometro extends JFrame implements ActionListener{
+public class Cronometro3 extends JFrame implements ActionListener{
 
 	private JLabel label;
 	private JButton btnIniciar;
@@ -11,10 +11,10 @@ public class Cronometro extends JFrame implements ActionListener{
 	static boolean iniciarHilo = true;
 	static boolean corriendo = false;
 	static boolean detenido= false;
-	EjercicioVelocidadLectura e;
-	ThreadCronometro threadc;
+	ThreadCronometro3 threadc;
+	EjercicioAtencion e;
 
-	public Cronometro()
+	public Cronometro3()
 	{
 		initialize();
 		setSize(228,120);
@@ -47,10 +47,10 @@ public class Cronometro extends JFrame implements ActionListener{
 			if(corriendo==false){
 				iniciarHilo=true;
 				corriendo=true;
-				iniciarHiloCronometro();
+				iniciarHiloCronometro3();
 				btnIniciar.setVisible(false);
 				this.remove(btnIniciar);
-				e = new EjercicioVelocidadLectura();
+				e = new EjercicioAtencion();
 
 			}
 		}
@@ -59,21 +59,22 @@ public class Cronometro extends JFrame implements ActionListener{
 			iniciarHilo=false;
 			setVisible(false);
 			String minutoFinal = Integer.toString(minuto);
-			String segundoFinal = Integer.toString(segundo);
+			String segundoinal = Integer.toString(segundo);
 			String centesimaFinal = Integer.toString(centesimasegundo);
 			System.out.println(minuto+":"+segundo+":"+centesimasegundo);
+			e.frame.dispose();
 			dispose();
 			if(centesimasegundo>0)
-			{	Archivo.CrearArchivo(minutoFinal+":"+segundoFinal +":"+centesimaFinal,LogIn.nombreUsuario+Menu.numeroEjercicio+".txt");	}
+			{	Archivo.CrearArchivo(minutoFinal+":"+segundoinal +":"+centesimaFinal,LogIn.nombreUsuario+Menu.numeroEjercicio+".txt");	}
 			try{	threadc.stop();	}
 			catch(Exception e){	e.printStackTrace();}
 			
 			}
 	}
 
-	public  void iniciarHiloCronometro(){
+	public  void iniciarHiloCronometro3(){
 		if(iniciarHilo==true){
-			 threadc= new ThreadCronometro(label);
+			 threadc= new ThreadCronometro3(label);
 			threadc.start();
 		}
 	}

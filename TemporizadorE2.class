@@ -2,7 +2,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.awt.Font;
 
-public class Temporizador extends JFrame implements ActionListener{
+public class TemporizadorE2 extends JFrame implements ActionListener{
 
 	private JLabel label;
 	private JButton btnIniciar;
@@ -10,19 +10,16 @@ public class Temporizador extends JFrame implements ActionListener{
 	static int minuto = 0, segundo =0, centesimasegundo = 1;
 	static boolean iniciarHilo = true;
 	boolean corriendo = false;
-	ThreadTemporizador threadt;
+	ThreadTemporizadorE2 threadt;
 
-	public Temporizador(){
+	public TemporizadorE2(){
 		initialize();
 		setSize(228,150);
 		getContentPane().setLayout(null);
 		setLocationRelativeTo(null);
 		setVisible(true);
-		if(finalizado==true){
-			System.out.println(finalizado);
-			this.setVisible(false);
-			this.dispose();
-		}
+		JOptionPane.showMessageDialog(this, "Al dar click en 'Iniciar' , se iniciara el ejercicio. Cuenta con 10 segundos para leer las instrucciones");
+
 	}
 
 	private void initialize(){
@@ -46,24 +43,25 @@ public class Temporizador extends JFrame implements ActionListener{
 				iniciarHilo=true;
 				corriendo=true;
 				iniciarHiloTemporizador();
-
-				
 			}
 
 		}
 	}
 
 	private void finalizarHiloTemporizador(){
-		try{
-			threadt.stop();
-		}catch(Exception e){e.printStackTrace();}
+		if(minuto==0&&segundo==0&&centesimasegundo==0){
+			try{threadt.stop();}catch(Exception e){e.printStackTrace();}
+			this.setVisible(false);
+			this.dispose();
+		}
+		
 
 	}
 
 
 	private void iniciarHiloTemporizador(){
 		if(iniciarHilo==true){
-			threadt= new ThreadTemporizador(label);
+			threadt= new ThreadTemporizadorE2(label);
 			threadt.start();
 			if(finalizado==true){
 				System.out.println("sleep");
