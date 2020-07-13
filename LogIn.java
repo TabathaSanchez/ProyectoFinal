@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
     public String clave;
     public ArrayList <String> contenidoUser = new  ArrayList <String>();
     public ArrayList <String> contenidoPass = new  ArrayList <String>();
-
+    public int cont2=0;
     JPanel panel;
     Color fondo,fondoMenu;
     JLabel texto,usuario,contrasena;
@@ -181,8 +181,17 @@ import javax.swing.JOptionPane;
                     {
                         posicionu = i;
                         System.out.println("usuario encontrado: " + contenidoUser.get(i)+ " "+ i);
-                    }   
+                    }  
+                    else
+                    {
+                        System.out.println("usuario no registrado.");
+                         txtcontrasenavis.setText("");
+                         txtusuario.setText("");
+                         txtcontrasena.setText("");
+                         cont2++;
+                    }
                 }   
+
                 
                 for (int i=0; i<contenidoPass.size(); i++)
                 {
@@ -190,10 +199,11 @@ import javax.swing.JOptionPane;
                     {
                         posicionc = i;
                         System.out.println("Clave encontrado: "+ contenidoPass.get(i)+ " "+ i); 
-                    }   
+                    }  
+
                 }
             }
-             if(posicionc == posicionu)
+             if(posicionc == posicionu && cont2==0)
             {   nombreUsuario = txtusuario.getText();
                 Menu menu = new Menu();
                 this.dispose();
@@ -203,8 +213,7 @@ import javax.swing.JOptionPane;
                 txtcontrasena.setText("");
             }
             else 
-            {   
-                JOptionPane.showMessageDialog (null, "clave incorrecta.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            {  JOptionPane.showMessageDialog (null, "clave y/o Usuario incorrecto.", "ERROR", JOptionPane.ERROR_MESSAGE);
                 txtcontrasenavis.setText("");
                 txtcontrasena.setText("");
             }
