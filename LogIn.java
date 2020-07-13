@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
     public String clave;
     public ArrayList <String> contenidoUser = new  ArrayList <String>();
     public ArrayList <String> contenidoPass = new  ArrayList <String>();
-    public int cont2=0;
+
     JPanel panel;
     Color fondo,fondoMenu;
     JLabel texto,usuario,contrasena;
@@ -182,17 +182,8 @@ import javax.swing.JOptionPane;
                         posicionu = i;
                         System.out.println("usuario encontrado: " + contenidoUser.get(i)+ " "+ i);
                     }  
-                    else
-                    {
-                        System.out.println("usuario no registrado.");
-                         txtcontrasenavis.setText("");
-                         txtusuario.setText("");
-                         txtcontrasena.setText("");
-                         cont2++;
-                    }
                 }   
 
-                
                 for (int i=0; i<contenidoPass.size(); i++)
                 {
                     if( txtcontrasena.getText().equals(contenidoPass.get(i)))
@@ -203,7 +194,7 @@ import javax.swing.JOptionPane;
 
                 }
             }
-             if(posicionc == posicionu && cont2==0)
+             if(posicionc == posicionu)
             {   nombreUsuario = txtusuario.getText();
                 Menu menu = new Menu();
                 this.dispose();
